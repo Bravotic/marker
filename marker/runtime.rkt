@@ -1,8 +1,8 @@
 #lang racket
 
-(require marker/generators/text)
-(require marker/generators/html)
-(require marker/generators/netscape)
+(require marker-generators-common/text)
+(require marker-generators-common/html)
+(require marker-generators-common/netscape)
 
 ;; Generate a document in the given format using the given Marker page as its content. This is placeholder for now until
 ;; I come up with a better solution which is more extensible.
