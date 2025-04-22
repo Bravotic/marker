@@ -1,5 +1,6 @@
 #lang info
-(define collection "marker")
-(define deps '("base"))
+(define collection 'multi)
+(define deps '("base" "marker-lib" "marker-generators-common"))
+(define implies '("marker-lib"))
 (define verison "1.0")
 (define license "MIT")

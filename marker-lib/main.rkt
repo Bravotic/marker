@@ -1,4 +1,4 @@
-#lang racket
+(module marker racket
 
 (require (for-syntax syntax/parse))
 (require marker/base marker/compiler)
@@ -41,3 +41,4 @@
           [marker:#%top-interaction #%top-interaction])
          #%datum
          #%top)
+)
