@@ -33,10 +33,4 @@
     [(_ (name:string contents ...) rest ...)
      #'(cons (folder name (compile-entry contents ...)) (compile-entry rest ...))]))
 
-; Tests for compile-entry
-(module+ test
-  (require rackunit)
-
-  (check-eq? 1 1))
-
 (provide compile-entry)
