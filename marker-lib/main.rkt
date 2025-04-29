@@ -11,9 +11,11 @@
      #`(#%module-begin
         (define page (compile-entry entries ...))
         (provide page))]))
+ 
+(module reader syntax/module-reader
+  marker)
 
 (provide (rename-out
           [marker:#%module-begin #%module-begin])
          #%datum
          #%top)
-
