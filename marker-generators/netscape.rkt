@@ -62,4 +62,13 @@
 ~a</DL><p>"
           (entry->netscape entry 1)))
 
+(module+ main
+  (require raco/command-name)
+  (match (current-command-line-arguments)
+    [(or (vector "--help") (vector))
+     (printf "Usage: raco ~a [Marker file]\n"
+             (current-command-name))]
+    [(vector file)
+     (display (marker->netscape (dynamic-require file 'page)))]))
+
 (provide marker->netscape)

@@ -45,4 +45,13 @@
   (format "<html>\n<body>\n<h1>Bookmarks</h1>\n~a</body>\n</html>\n"
           (entry->html entry)))
 
+(module+ main
+  (require raco/command-name)
+  (match (current-command-line-arguments)
+    [(or (vector "--help") (vector))
+     (printf "Usage: raco ~a [Marker file]\n"
+             (current-command-name))]
+    [(vector file)
+     (display (marker->html (dynamic-require file 'page)))]))
+
 (provide marker->html)

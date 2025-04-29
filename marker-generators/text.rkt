@@ -44,4 +44,13 @@
 (define (marker->text entry)
           (entry->text entry 0))
 
+(module+ main
+  (require raco/command-name)
+  (match (current-command-line-arguments)
+    [(or (vector "--help") (vector))
+     (printf "Usage: raco ~a [Marker file]\n"
+             (current-command-name))]
+    [(vector file)
+     (display (marker->text (dynamic-require file 'page)))]))
+
 (provide marker->text)
