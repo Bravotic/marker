@@ -18,7 +18,7 @@ them. The main use of Marker is to provide a common format to which other
 formats can be easily compiled. This document will walk you through the basics
 of writing Marker documents and compiling them to a few common formats.
 
-@section{The Marker Programming Language Quick Reference}
+@section{Marker Quick Reference}
 
 Marker is a very small programming language. That being said, it features pretty
 much all the functionality you'd need in its rather small domain. The following
