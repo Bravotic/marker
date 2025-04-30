@@ -6,4 +6,4 @@
     ("marker-netscape" (submod marker-generators/netscape main) "Compile Marker to Netscape Bookmarks Format" #f)
     ("marker-text" (submod marker-generators/text main) "Compile Marker to plain text" #f)))
 (define verison "1.0")
-(define license MIT)
+(define license 'MIT)
