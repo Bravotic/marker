@@ -28,7 +28,9 @@
 
     ; Entry is a require. We resolve it here.
     [(_ ((~datum require) path:string) rest ...)
-     #'(cons (dynamic-require path 'page) (compile-entry rest ...))]
+     #'(cons (parameterize ([current-directory (path-only path)])
+               (dynamic-require (file-name-from-path path) 'page))
+             (compile-entry rest ...))]
     
     [(_ (name:string contents ...) rest ...)
      #'(cons (folder name (compile-entry contents ...)) (compile-entry rest ...))]))
