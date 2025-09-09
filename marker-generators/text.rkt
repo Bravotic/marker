@@ -15,7 +15,9 @@
 (define (bookmark->text entry indent-level)
   (format "~a~a: ~a\n"
           (do-indent indent-level)
-          (bookmark-name entry)
+          (if (non-empty-string? (bookmark-description entry))
+              (format "~a - ~a" (bookmark-name entry) (bookmark-description entry))
+              (bookmark-name entry))
           (bookmark-url entry)))
 
 ;; Compiles a folder entry to its corresponding text representation.

@@ -34,12 +34,21 @@ is a comprehensive list of all the functionality present in Marker:
           (url <String>)]
          ]{Defines a bookmark with a given name which points to a given URL.}
 
+@defform[#:id _
+         #:literals [<String>]
+         (name description url)
+         #:grammar
+         [(name <String>)
+          (description <String>)
+          (url <String>)]
+         ]{Defines a bookmark with a given name and description which points to a given URL.}
+
 The following are examples of bookmarks being defined in Marker:
 
 @codeblock|{
             #lang marker
             ("Google" "https://google.com")
-            ("Racket" "https://racket-lang.org")
+            ("Racket" "The language oriented programming language" "https://racket-lang.org")
             ("Blank Page" "about:blank")
             }|
 

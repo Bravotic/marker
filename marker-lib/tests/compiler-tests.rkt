@@ -14,15 +14,15 @@
 
 ; Test compile single bookmark
 (check-equal? (compile-entry ("Name" "about:blank"))
-              (list (bookmark "Name" "about:blank")))
+              (list (bookmark "Name" "" "about:blank")))
 
 ; Test compile multiple bookmarks
 (check-equal? (compile-entry
                ("Name" "about:blank")
                ("Other" "about:blank"))
               (list
-               (bookmark "Name" "about:blank")
-               (bookmark "Other" "about:blank")))
+               (bookmark "Name" "" "about:blank")
+               (bookmark "Other" "" "about:blank")))
 
 ; Test compile single folder
 (check-equal? (compile-entry

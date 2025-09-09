@@ -10,6 +10,7 @@
 ;;;            | (require [file-name : string])
 ;;;
 ;;; bookmark ::= ([name : string] [url : string])
+;;;            | ([name : string] [description : string] [url : string])
 ;;;
 ;;; folder   ::= [[name : string] <entry> ...]
 
@@ -22,9 +23,13 @@
     [(_)
      #''()]
 
-    ; Entry is a <bookmark>
+    ; Entry is a <bookmark> with no description
     [(_ (name:string url:string) rest ...)
-     #'(cons (bookmark name url) (compile-entry rest ...))]
+     #'(cons (bookmark name "" url) (compile-entry rest ...))]
+
+    ; Entry is a <bookmark> with a description
+    [(_ (name:string description:string url:string) rest ...)
+     #'(cons (bookmark name description url) (compile-entry rest ...))]
 
     ; Entry is a require. We resolve it here.
     [(_ ((~datum require) path:string) rest ...)

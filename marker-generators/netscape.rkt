@@ -18,10 +18,20 @@
 ;; Compiles a bookmark entry into its corresponding Netscape bookmark entry.
 ;; (bookmark->netscape : (MarkerEntry Number -> String))
 (define (bookmark->netscape entry indent-level)
-  (format "~a<DT><A HREF=\"~a\" ADD_DATE=\"0\" LAST_MODIFIED=\"0\">~a</A>\n"
-          (do-indent indent-level)
-          (bookmark-url entry)
-          (bookmark-name entry)))
+  (match entry
+    [(bookmark title description url)
+     #:when (non-empty-string? description)
+     (format "~a<DT><A HREF=\"~a\" ADD_DATE=\"0\" LAST_MODIFIED=\"0\">~a</A>\n~a<DD>~a\n"
+             (do-indent indent-level)
+             url
+             title
+             (do-indent indent-level)
+             description)]
+    [(bookmark title _ url)
+     (format "~a<DT><A HREF=\"~a\" ADD_DATE=\"0\" LAST_MODIFIED=\"0\">~a</A>\n"
+             (do-indent indent-level)
+             url
+             title)]))
 
 ;; Compiles a folder entry into its corresponding Netscape bookmark folder. For all entries within the folder, the
 ;; current indentation level is increased by 1.

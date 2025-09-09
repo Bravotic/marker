@@ -14,10 +14,19 @@
 ;; Compiles a bookmark entry to its corresponding HTML representation.
 ;; (bookmark->html : (MarkerEntry -> String))
 (define (bookmark->html entry)
-  (format "<li><a href=\"~a\"><img height=16 width=16 src=\"~a\">~a</a></li>\n"
-          (bookmark-url entry)
-          (get-favicon-url (bookmark-url entry))
-          (bookmark-name entry)))
+  (match entry
+    [(bookmark title description url)
+     #:when (non-empty-string? description)
+     (format "<li><a href=\"~a\"><img height=16 width=16 src=\"~a\">~a</a> - ~a</li>\n"
+             url
+             (get-favicon-url url)
+             title
+             description)]
+    [(bookmark title _ url)
+     (format "<li><a href=\"~a\"><img height=16 width=16 src=\"~a\">~a</a></li>\n"
+             url
+             (get-favicon-url url)
+             title)]))
 
 ;; Compiles a folder entry to its corresponding HTML representation.
 ;; (folder->html : (MarkerEntry -> String))
