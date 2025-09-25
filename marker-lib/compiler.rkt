@@ -33,7 +33,7 @@
 
     ; Entry is a require. We resolve it here.
     [(_ ((~datum require) path:string) rest ...)
-     #'(cons (parameterize ([current-directory (path-only path)])
+     #'(append (parameterize ([current-directory (path-only path)])
                (dynamic-require (file-name-from-path path) 'page))
              (compile-entry rest ...))]
     
