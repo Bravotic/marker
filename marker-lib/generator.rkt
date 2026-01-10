@@ -35,7 +35,9 @@
 
 (define-syntax (marker-generator stx)
   (syntax-parse stx
-    [(_ (~alt (~once ((~datum folder) . folder-body)) (~once ((~datum join) . join-body)) (~once ((~datum bookmark) . bookmark-body))) ...)
+    [(_ (~alt (~once ((~datum folder) . folder-body))
+              (~once ((~datum join) . join-body))
+              (~once ((~datum bookmark) . bookmark-body))) ...)
      #'(letrec [(generator
                   (lambda (indent-level-ref path-ref input)
                     (match input
